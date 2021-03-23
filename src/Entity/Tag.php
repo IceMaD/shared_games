@@ -17,17 +17,17 @@ class Tag
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="games")
      */
-    private $games;
+    private Collection $games;
 
     public function __construct()
     {
@@ -39,42 +39,13 @@ class Tag
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Game[]
-     */
-    public function getGames(): Collection
+    public function getGames(): ArrayCollection
     {
         return $this->games;
-    }
-
-    public function addGame(Game $game): self
-    {
-        if (!$this->games->contains($game)) {
-            $this->games[] = $game;
-            $game->addGame($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGame(Game $game): self
-    {
-        if ($this->games->removeElement($game)) {
-            $game->removeGame($this);
-        }
-
-        return $this;
     }
 }

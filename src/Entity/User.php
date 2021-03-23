@@ -6,38 +6,48 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $pseudo;
+    private string $pseudo;
 
     /**
      * @ORM\ManyToMany(targetEntity=Game::class, inversedBy="users")
      */
-    private $games;
+    private Collection $games;
 
-    public function __construct()
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $googleId;
+
+    public function __construct(string $googleId, string $email)
     {
         $this->games = new ArrayCollection();
+        $this->googleId = $googleId;
+        $this->email = $email;
+        $this->pseudo = '';
     }
 
     public function getId(): ?int
@@ -45,51 +55,48 @@ class User
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPseudo(): ?string
+    public function getPseudo(): string
     {
         return $this->pseudo;
     }
 
-    public function setPseudo(string $pseudo): self
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Game[]
-     */
-    public function getGames(): Collection
+    public function getGames(): ArrayCollection
     {
         return $this->games;
     }
 
-    public function addGame(Game $game): self
+    public function getGoogleId(): string
     {
-        if (!$this->games->contains($game)) {
-            $this->games[] = $game;
-        }
-
-        return $this;
+        return $this->googleId;
     }
 
-    public function removeGame(Game $game): self
+    public function getRoles()
     {
-        $this->games->removeElement($game);
+        return ['ROLE_USER'];
+    }
 
-        return $this;
+    public function getPassword()
+    {
+        return null;
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+        return null;
     }
 }
