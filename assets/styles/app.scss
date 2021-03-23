@@ -1,0 +1,55 @@
+$lila: #7289da;
+$white: #ffffff;
+$grey-light: #99aab5;
+$grey-medium: #2c2f33;
+$grey-dark: #23272a;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template: auto 1fr / auto 1fr;
+  font-family: Ubuntu, sans-serif;
+  font-weight: 300;
+
+  .header {
+    padding: 1rem;
+    grid-column: 1 / 4;
+    background-color: $grey-dark;
+    color: $white;
+  }
+
+  .sidebar {
+    grid-column: 1 / 2;
+    background-color: $grey-dark;
+    color: $white;
+
+    ul {
+      list-style: none;
+
+      li {
+        :hover {
+          background-color: $grey-medium;
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+          display: inline-block;
+          padding: 1rem 1.5rem;
+        }
+      }
+    }
+  }
+
+  .main {
+    padding: 1rem;
+    grid-column: 2 / 3;
+    background-color: $white;
+    color: $grey-dark;
+  }
+}
+
