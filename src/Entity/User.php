@@ -33,6 +33,11 @@ class User implements UserInterface
     private string $pseudo;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $name;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Game::class, inversedBy="users")
      */
     private Collection $games;
@@ -42,12 +47,13 @@ class User implements UserInterface
      */
     private string $googleId;
 
-    public function __construct(string $googleId, string $email)
+    public function __construct(string $googleId, string $email, string $name)
     {
         $this->games = new ArrayCollection();
         $this->googleId = $googleId;
         $this->email = $email;
         $this->pseudo = '';
+        $this->name = $name;
     }
 
     public function getId(): ?int
@@ -63,6 +69,11 @@ class User implements UserInterface
     public function getPseudo(): string
     {
         return $this->pseudo;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function addGame(Game $game): self

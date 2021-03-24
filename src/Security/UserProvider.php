@@ -26,11 +26,9 @@ class UserProvider implements UserProviderInterface, OAuthAwareUserProviderInter
     {
         $email = $response->getEmail();
         $googleId = $response->getUsername();
+        $data = $response->getData();
 
-        $parts = explode('@', $email);
-        $domain = end($parts);
-
-        if ('campings.com' !== $domain) {
+        if ('campings.com' !== $data['hd']) {
             throw new UsernameNotFoundException();
         }
 
@@ -38,7 +36,7 @@ class UserProvider implements UserProviderInterface, OAuthAwareUserProviderInter
             return $user;
         }
 
-        $user = new User($googleId, $email);
+        $user = new User($googleId, $email, $data['name']);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush($user);

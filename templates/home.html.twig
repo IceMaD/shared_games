@@ -2,6 +2,8 @@
 
 {% form_theme filterGamesForm 'form/horizontal.html.twig' %}
 
+{% block title %}Games of everyone{% endblock %}
+
 {% block main %}
     {% set sortedUsers = users|sort((a, b) => a.username <=> b.username) %}
 
@@ -16,7 +18,7 @@
                     <td>Game</td>
                     <td>Tags</td>
                     {% for user in sortedUsers %}
-                        <td user="{{ user.id }}">{{ user.username }}</td>
+                        <td user="{{ user.id }}" title="{{ user.name }}">{{ user.pseudo|default(user.name) }}</td>
                     {% endfor %}
                 </tr>
             </thead>
