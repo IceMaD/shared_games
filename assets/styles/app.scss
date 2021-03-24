@@ -92,7 +92,7 @@ body {
   }
 }
 
-form {
+form:not(.remove) {
   .group {
     display: flex;
     flex-direction: column;
@@ -108,6 +108,16 @@ form {
       outline: none;
       line-height: 1rem;
       font-weight: 300;
+    }
+  }
+
+  .submit-row {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+
+    button[type="submit"] {
+      @extend .button;
     }
   }
 
@@ -154,6 +164,7 @@ table {
       &.positive {
         background-color: $chlorophyll;
         border-bottom: 1px solid darken($chlorophyll, 10);
+
         .emoji {
           color: transparent;
           text-shadow: 0 0 0 darken($chlorophyll, 25);
