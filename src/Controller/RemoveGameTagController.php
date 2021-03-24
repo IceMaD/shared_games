@@ -27,7 +27,7 @@ class RemoveGameTagController extends AbstractController
         UrlGeneratorInterface $urlGenerator,
         EntityManagerInterface $entityManager
     ): Response {
-        $removeGameForm = $formFactory->create(
+        $removeGameTagForm = $formFactory->create(
             RemoveGameTagType::class,
             null,
             [
@@ -38,7 +38,7 @@ class RemoveGameTagController extends AbstractController
             ]
         );
 
-        if ($removeGameForm->handleRequest($request) && $removeGameForm->isSubmitted() && $removeGameForm->isValid()) {
+        if ($removeGameTagForm->handleRequest($request) && $removeGameTagForm->isSubmitted() && $removeGameTagForm->isValid()) {
             $game->removeTag($tag);
             $entityManager->flush($game);
 
@@ -47,7 +47,7 @@ class RemoveGameTagController extends AbstractController
 
         return $this->render(
             '_fragment/remove_game_tag.html.twig',
-            ['removeGameForm' => $removeGameForm->createView()]
+            ['removeGameTagForm' => $removeGameTagForm->createView()]
         );
     }
 }

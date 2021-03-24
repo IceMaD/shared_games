@@ -74,6 +74,13 @@ class User implements UserInterface
         return $this;
     }
 
+    public function removeGame(Game $game): self
+    {
+        $this->games->removeElement($game);
+
+        return $this;
+    }
+
     /**
      * @return ArrayCollection|Game[]
      */

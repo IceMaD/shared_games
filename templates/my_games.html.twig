@@ -17,7 +17,10 @@
                     <td>{{ game.name }}</td>
                     <td>{{ game.tags |map((tag) => tag.name)|join(', ') }}</td>
                     <td>
-                        <a class="button" href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>
+                        <div class="button-bar">
+                            <a class="button" href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>
+                            {{ render(controller('\\App\\Controller\\RemoveUserGameController', {game: game})) }}
+                        </div>
                     </td>
                 </tr>
             {% endfor %}

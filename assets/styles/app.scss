@@ -64,6 +64,14 @@ body {
   }
 }
 
+.button-bar {
+  display: flex;
+
+  & > *:not(:first-child) {
+    margin-left: .5rem;
+  }
+}
+
 .button {
   text-decoration: none;
   border: none;
