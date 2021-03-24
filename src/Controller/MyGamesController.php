@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Form\AddGames\AddGamesObject;
-use App\Form\AddGames\AddGamesType;
+use App\Form\AddUserGames\AddUserGamesObject;
+use App\Form\AddUserGames\AddUserGamesType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,10 +27,10 @@ class MyGamesController extends AbstractController
         Security $security,
         FormFactoryInterface $factory
     ): Response {
-        $addGamesForm = $factory->create(AddGamesType::class);
+        $addGamesForm = $factory->create(AddUserGamesType::class);
 
         if ($addGamesForm->handleRequest($request) && $addGamesForm->isSubmitted()) {
-            /** @var AddGamesObject $addGamesObject */
+            /** @var AddUserGamesObject $addGamesObject */
             $addGamesObject = $addGamesForm->getData();
 
             $user = $security->getUser();

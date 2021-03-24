@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Form\AddGames;
+namespace App\Form\AddUserGames;
 
 use App\Entity\Game;
 
-class AddGamesObject
+class AddUserGamesObject
 {
     /** @var Game[] */
     public array $games;

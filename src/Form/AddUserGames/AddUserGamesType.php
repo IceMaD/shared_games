@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form\AddGames;
+namespace App\Form\AddUserGames;
 
 use App\Entity\Game;
 use App\Form\TagifyType;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddGamesType extends AbstractType
+class AddUserGamesType extends AbstractType
 {
     private GameRepository $gameRepository;
 
@@ -41,7 +41,7 @@ class AddGamesType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => AddGamesObject::class,
+                'data_class' => AddUserGamesObject::class,
             ]
         );
     }
