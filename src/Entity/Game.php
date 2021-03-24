@@ -77,4 +77,11 @@ class Game
     {
         return $this->users;
     }
+
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
+
+        return $this;
+    }
 }

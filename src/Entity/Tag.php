@@ -50,4 +50,11 @@ class Tag
     {
         return $this->games;
     }
+
+    public function removeGame(Game $game): self
+    {
+        $this->games->removeElement($game);
+
+        return $this;
+    }
 }

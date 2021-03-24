@@ -38,6 +38,11 @@ class RemoveUserGameController extends AbstractController
         if ($removeUserGameForm->handleRequest($request) && $removeUserGameForm->isSubmitted() && $removeUserGameForm->isValid()) {
             $user = $security->getUser();
             $user->removeGame($game);
+            $game->removeUser($user);
+
+            if ($game->getUsers()->isEmpty()) {
+                $entityManager->remove($game);
+            }
             $entityManager->flush($user);
 
             return new RedirectResponse($urlGenerator->generate('my_games'));

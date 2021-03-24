@@ -40,6 +40,11 @@ class RemoveGameTagController extends AbstractController
 
         if ($removeGameTagForm->handleRequest($request) && $removeGameTagForm->isSubmitted() && $removeGameTagForm->isValid()) {
             $game->removeTag($tag);
+            $tag->removeGame($game);
+
+            if ($tag->getGames()->isEmpty()) {
+                $entityManager->remove($tag);
+            }
             $entityManager->flush($game);
 
             return new RedirectResponse($urlGenerator->generate('edit_game_tags', ['id' => $game->getId()]));
