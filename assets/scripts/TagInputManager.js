@@ -20,13 +20,12 @@ class TagInputManager {
     const datalist = document.getElementById(`${input.id}-datalist`)
     const maxTags = datalist.getAttribute('max-tags') ?? Infinity
     const enforceWhitelist = datalist.getAttribute('enforce') === 'true';
-    const whitelist = [...datalist.options].map(({ value, textContent }) => ({
-      id: value,
-      value: textContent
-    }))
+    const whitelist = [...datalist.options].map(({ value, textContent }) => optionToTag(value, textContent))
 
     this._inputs[id] = new Tagify(input, { whitelist, maxTags, enforceWhitelist, dropdown: {enabled: 0, maxItems: 5} });
   }
 }
 
 export default TagInputManager
+
+export const optionToTag = (value, label) => ({id: value, value: label})

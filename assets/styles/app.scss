@@ -161,6 +161,10 @@ table {
       border: none;
       border-bottom: 1px solid $white-broken;
 
+      [filter-tag] {
+        cursor: pointer;
+      }
+
       &.positive {
         background-color: $chlorophyll;
         border-bottom: 1px solid darken($chlorophyll, 10);

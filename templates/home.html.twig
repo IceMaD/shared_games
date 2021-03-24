@@ -26,7 +26,14 @@
                 {% for game in games|sort((a, b) => a.name <=> b.name) %}
                     <tr game="{{ game.name }}" tags="{{ game.tags |map((tag) => tag.id) |json_encode }}">
                         <td>{{ game.name }}</td>
-                        <td>{{ game.tags |map((tag) => tag.name)|sort|join(', ') }}</td>
+                        <td>
+                            {%- for tag in game.tags -%}
+                                <span filter-tag="{{ tag.id }}" title="Filter on this tag">
+                                    {{- tag.name -}}
+                                </span>
+                                {%- if not loop.last -%}, {% endif -%}
+                            {%- endfor -%}
+                        </td>
                         {% for user in sortedUsers %}
                             {% set hasGame = user has game %}
                             <td user="{{ user.id }}" has="{{ hasGame ? 'true' : 'false' }}" class="{{ hasGame ? 'positive' : 'neutral' }}"><span class="emoji">{{ hasGame ? '✔️' : '✖️' }}</span></td>

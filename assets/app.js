@@ -1,6 +1,6 @@
 import '@yaireo/tagify/dist/tagify.css'
 
-import TagInputManager from './scripts/TagInputManager'
+import TagInputManager, {optionToTag} from './scripts/TagInputManager'
 import './styles/app.scss'
 
 const tagInputManager = new TagInputManager()
@@ -103,13 +103,25 @@ if (allGamesTable) {
   const gameInput = document.getElementById('filter_games_game')
   const filters = new Filters(rows)
 
+  // Bind in-table tags
+  allGamesTable.querySelectorAll('[filter-tag]').forEach(filterTag => {
+    filterTag.addEventListener('click', () => {
+      tagInputManager
+        .get('filter_games_tags')
+        .addTags([optionToTag(filterTag.getAttribute('filter-tag'), filterTag.textContent)])
+    })
+  })
+
+  // Bind tag picker
   tagInputManager
     .get('filter_games_tags')
     .on('change', event => filters.setSelectedTags(event.detail.tagify.value.map(tag => parseInt(tag.id, 10))))
 
+  // Bind game search
   gameInput.addEventListener('keyup', event => filters.setGameName(event.target.value))
   gameInput.addEventListener('blur', event => filters.setGameName(event.target.value))
 
+  // Bind user header
   allGamesTable.querySelectorAll('thead td[user]').forEach(td => {
     const userId = parseInt(td.getAttribute('user'), 10)
 
