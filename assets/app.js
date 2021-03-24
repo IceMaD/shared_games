@@ -87,7 +87,7 @@ class Filters {
         return gameRow.hide()
       }
 
-      if (0 < this._filters.userIds.length && 0 === gameRow.users.filter(value => this._filters.userIds.includes(value)).length) {
+      if (0 < this._filters.userIds.length && !this._filters.userIds.every(val => gameRow.users.includes(val))) {
         return gameRow.hide()
       }
 
