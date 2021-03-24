@@ -17,7 +17,7 @@
                     <td>{{ game.name }}</td>
                     <td>{{ game.tags |map((tag) => tag.name)|join(', ') }}</td>
                     <td>
-                        <a href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>
+                        <a class="button" href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>
                     </td>
                 </tr>
             {% endfor %}

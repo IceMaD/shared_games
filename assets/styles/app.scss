@@ -63,6 +63,15 @@ body {
   }
 }
 
+a.button {
+  text-decoration: none;
+  color: $white;
+  background-color: $lila;
+  padding: .5rem 1rem;
+  display: inline-flex;
+  border-radius: 0.2rem;
+}
+
 table {
   width: 100%;
   thead {
