@@ -11,7 +11,7 @@
                     <td>Action</td>
                 </tr>
             </thead>
-            {% for tag in game.tags %}
+            {% for tag in game.tags|sort((a, b) => a.name <=> b.name) %}
                 <tr>
                     <td>{{ tag.name }}</td>
                     <td>

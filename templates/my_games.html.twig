@@ -12,10 +12,10 @@
                     <td>Actions</td>
                 </tr>
             </thead>
-            {% for game in app.user.games %}
+            {% for game in app.user.games|sort((a, b) => a.name <=> b.name) %}
                 <tr>
                     <td>{{ game.name }}</td>
-                    <td>{{ game.tags |map((tag) => tag.name)|join(', ') }}</td>
+                    <td>{{ game.tags |map((tag) => tag.name)|sort|join(', ') }}</td>
                     <td>
                         <div class="button-bar">
                             <a class="button" href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>
