@@ -13,6 +13,7 @@ $grey-dark: #23272a;
 }
 
 body {
+  font-size: 16px;
   min-height: 100vh;
   display: grid;
   grid-template: auto 1fr / auto 1fr;
@@ -92,10 +93,28 @@ body {
 }
 
 form {
+  .group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: .5rem;
+    }
+
+    input {
+      display: flex;
+      border: 1px solid $white-broken;
+      padding: .5rem;
+      outline: none;
+      line-height: 1rem;
+      font-weight: 300;
+    }
+  }
+
   &.horizontal > div {
     display: flex;
 
-    > * {
+    .group {
       flex: auto;
 
       &:not(:first-child) {

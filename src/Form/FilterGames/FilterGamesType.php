@@ -2,12 +2,12 @@
 
 namespace App\Form\FilterGames;
 
-use App\Entity\Game;
 use App\Entity\Tag;
 use App\Form\TagifyType;
 use App\Repository\GameRepository;
 use App\Repository\TagRepository;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class FilterGamesType extends AbstractType
@@ -24,18 +24,7 @@ class FilterGamesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-//            ->add(
-//                'games',
-//                TagifyType::class,
-//                [
-//                    'options' => array_reduce(
-//                        $this->gameRepository->findAll(),
-//                        fn($options, Game $game) => $options + [$game->getId() => $game->getName()],
-//                        []
-//                    ),
-//                    'enforce_options' => true,
-//                ]
-//            )
+            ->add('game', TextType::class)
             ->add(
                 'tags',
                 TagifyType::class,

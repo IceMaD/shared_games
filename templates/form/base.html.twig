@@ -13,3 +13,9 @@
         {% endfor %}
     </datalist>
 {% endblock %}
+
+
+{% block form_row %}
+    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ ' group'}) %}
+    {{ parent() }}
+{% endblock %}

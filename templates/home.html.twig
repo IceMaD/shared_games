@@ -10,7 +10,7 @@
     </div>
 
     <div class="card">
-        <table cellspacing="0" cellpadding="0" filtered-by="filter_games_tags">
+        <table id="all_games" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
                     <td>Game</td>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 {% for game in games|sort((a, b) => a.name <=> b.name) %}
-                    <tr tags="{{ game.tags |map((tag) => tag.id) |json_encode }}">
+                    <tr game="{{ game.name }}" tags="{{ game.tags |map((tag) => tag.id) |json_encode }}">
                         <td>{{ game.name }}</td>
                         {% for user in sortedUsers %}
                             <td class="{{ user has game ? 'positive' : 'neutral' }}">{{ user has game ? 'Yep' : 'Nope' }}</td>
