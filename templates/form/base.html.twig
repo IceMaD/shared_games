@@ -3,7 +3,11 @@
 {% block tagify_widget %}
     {% set attr = attr|merge({tagify: true}) %}
     {{ block('form_widget_simple') }}
-    <datalist id="{{ id }}-datalist" {{ max_tags is not null ? 'max-tags='~max_tags~'' : '' }}>
+    <datalist
+            id="{{ id }}-datalist"
+            {{ max_tags is not null ? 'max-tags='~max_tags~'' : '' }}
+            enforce="{{ enforce_options ? 'true' : 'false' }}"
+    >
         {% for id, option in options %}
             <option value="{{ id }}">{{ option }}</option>
         {% endfor %}

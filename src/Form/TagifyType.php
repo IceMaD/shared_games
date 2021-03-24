@@ -40,6 +40,7 @@ class TagifyType extends TextType
 
         $view->vars['options'] = $options['options'];
         $view->vars['max_tags'] = $options['max_tags'];
+        $view->vars['enforce_options'] = $options['enforce_options'];
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -49,13 +50,15 @@ class TagifyType extends TextType
         $resolver->setDefaults(
             [
                 'options' => null,
+                'enforce_options' => false,
                 'max_tags' => null,
                 'option_transformer' => null,
             ]
         );
 
         $resolver->setAllowedTypes('options', ['array']);
+        $resolver->setAllowedTypes('enforce_options', ['boolean']);
         $resolver->setAllowedTypes('max_tags', ['int', 'null']);
-        $resolver->setAllowedTypes('option_transformer', ['callable']);
+        $resolver->setAllowedTypes('option_transformer', ['callable',  'null']);
     }
 }
