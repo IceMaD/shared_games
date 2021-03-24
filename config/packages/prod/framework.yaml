@@ -1,0 +1,5 @@
+framework:
+    session:
+        name: sh_ga_se_id
+        cookie_domain: campings.ludotech.page
+
