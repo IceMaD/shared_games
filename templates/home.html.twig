@@ -15,7 +15,7 @@
                 <tr>
                     <td>Game</td>
                     {% for user in sortedUsers %}
-                        <td>{{ user.username }}</td>
+                        <td user="{{ user.id }}">{{ user.username }}</td>
                     {% endfor %}
                 </tr>
             </thead>
@@ -24,7 +24,8 @@
                     <tr game="{{ game.name }}" tags="{{ game.tags |map((tag) => tag.id) |json_encode }}">
                         <td>{{ game.name }}</td>
                         {% for user in sortedUsers %}
-                            <td class="{{ user has game ? 'positive' : 'neutral' }}">{{ user has game ? 'Yep' : 'Nope' }}</td>
+                            {% set hasGame = user has game %}
+                            <td user="{{ user.id }}" has="{{ hasGame ? 'true' : 'false' }}" class="{{ hasGame ? 'positive' : 'neutral' }}"><span class="emoji">{{ hasGame ? '✔️' : '✖️' }}</span></td>
                         {% endfor %}
                     </tr>
                 {% endfor %}

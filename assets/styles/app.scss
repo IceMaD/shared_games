@@ -131,6 +131,16 @@ table {
   thead {
     font-weight: 500;
     border: none;
+
+    [user] {
+      cursor: pointer;
+      user-select: none;
+
+      &.selected:after {
+        content: '🔍';
+        margin-left: .25rem;
+      }
+    }
   }
 
   tr {
@@ -144,6 +154,17 @@ table {
       &.positive {
         background-color: $chlorophyll;
         border-bottom: 1px solid darken($chlorophyll, 10);
+        .emoji {
+          color: transparent;
+          text-shadow: 0 0 0 darken($chlorophyll, 25);
+        }
+      }
+
+      &.neutral {
+        .emoji {
+          color: transparent;
+          text-shadow: 0 0 0 $grey-light;
+        }
       }
     }
   }
