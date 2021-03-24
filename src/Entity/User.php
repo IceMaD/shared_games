@@ -66,6 +66,11 @@ class User implements UserInterface
         return $this->email;
     }
 
+    public function setPseudo(string $pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
     public function getPseudo(): string
     {
         return $this->pseudo;
