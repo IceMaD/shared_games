@@ -20,18 +20,16 @@ class AddUserGamesType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $tagifyOptions = [];
-
-        foreach ($this->gameRepository->findAll() as $game) {
-            $tagifyOptions[$game->getId()] = $game->getName();
-        }
-
         $builder
             ->add(
                 'games',
                 TagifyType::class,
                 [
-                    'options' => $tagifyOptions,
+                    'options' => array_reduce(
+                        $this->gameRepository->findBy([], ['name' => 'asc']),
+                        fn ($options, Game $game) => $options + [$game->getId() => $game->getName()],
+                        []
+                    ),
                     'option_transformer' => fn(?int $id, string $value) => $id ? $this->gameRepository->find($id) : (new Game($value)),
                 ]
             );

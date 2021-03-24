@@ -28,7 +28,7 @@ class EditGameTagsType extends AbstractType
                 TagifyType::class,
                 [
                     'options' => array_reduce(
-                        $this->tagRepository->findAll(),
+                        $this->tagRepository->findBy([], ['name' => 'asc']),
                         fn ($options, Tag $tag) => $options + [$tag->getId() => $tag->getName()],
                         []
                     ),

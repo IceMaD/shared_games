@@ -22,10 +22,7 @@ class TagifyType extends TextType
 
         $builder->addModelTransformer(
             new CallbackTransformer(
-                function () {
-//                    dump(func_get_args());
-//                    die;
-                },
+                function () {},
                 fn(string $submittedData) => array_map(
                     fn(array $tag) => $options['option_transformer']($tag['id'] ?? null, $tag['value']),
                     json_decode($submittedData, true)
