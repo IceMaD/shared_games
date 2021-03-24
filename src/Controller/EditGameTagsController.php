@@ -14,14 +14,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Core\Security;
 
 class EditGameTagsController extends AbstractController
 {
     /**
-     * @Route("/games/{id}/tags", name="edit_game_tags")
+     * @Route("/games/{id}/tags", name="edit_game_tags", methods={"GET", "POST"})
      */
-    public function index(
+    public function __invoke(
         Game $game,
         Request $request,
         UrlGeneratorInterface $urlGenerator,

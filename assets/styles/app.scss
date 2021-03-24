@@ -63,8 +63,11 @@ body {
   }
 }
 
-a.button {
+.button {
   text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
   color: $white;
   background-color: $lila;
   padding: .5rem 1rem;

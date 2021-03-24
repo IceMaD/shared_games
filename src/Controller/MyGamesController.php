@@ -18,9 +18,9 @@ use Symfony\Component\Security\Core\Security;
 class MyGamesController extends AbstractController
 {
     /**
-     * @Route("/my-games", name="my_games")
+     * @Route("/my-games", name="my_games", methods={"GET", "POST"})
      */
-    public function index(
+    public function __invoke(
         Request $request,
         UrlGeneratorInterface $urlGenerator,
         EntityManagerInterface $entityManager,

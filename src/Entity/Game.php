@@ -61,6 +61,13 @@ class Game
         return $this;
     }
 
+    public function removeTag(Tag $tag): self
+    {
+        $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
     public function getTags(): Collection
     {
         return $this->tags;

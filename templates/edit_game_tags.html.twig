@@ -15,7 +15,10 @@
                 <tr>
                     <td>{{ tag.name }}</td>
                     <td>
-                        {#                    <a href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>#}
+                        {{ render(controller(
+                            '\\App\\Controller\\RemoveGameTagController',
+                            { 'game': game, 'tag': tag }
+                        )) }}
                     </td>
                 </tr>
             {% endfor %}
