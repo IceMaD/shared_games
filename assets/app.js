@@ -1,9 +1,16 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
-
-// any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
+import '@yaireo/tagify/dist/tagify.css'
+
+import Tagify from '@yaireo/tagify'
+
+document.querySelectorAll('[tagify]').forEach(input => {
+  const datalist = document.getElementById(`${input.id}-datalist`)
+  const maxTags = datalist.getAttribute('max-tags') ?? Infinity
+  const whitelist = [...datalist.options].map(({ value, textContent }) => ({
+    id: value,
+    value: textContent
+  }))
+
+  new Tagify(input, { whitelist, maxTags })
+})
+

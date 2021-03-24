@@ -29,9 +29,11 @@ class Tag
      */
     private Collection $games;
 
-    public function __construct()
+    public function __construct(string $name)
     {
         $this->games = new ArrayCollection();
+        $this->name = $name;
+        $this->id = null;
     }
 
     public function getId(): ?int

@@ -9,7 +9,6 @@ Encore
   .setPublicPath('/build')
 
   .addEntry('app', './assets/app.js')
-  .addEntry('myGames', './assets/myGames.js')
 
   .splitEntryChunks()
 

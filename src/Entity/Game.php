@@ -52,6 +52,15 @@ class Game
         return $this->name;
     }
 
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
     public function getTags(): Collection
     {
         return $this->tags;
