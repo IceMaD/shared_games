@@ -1,0 +1,11 @@
+{% extends "form_div_layout.html.twig" %}
+
+{% block tagify_widget %}
+    {% set attr = attr|merge({tagify: true}) %}
+    {{ block('form_widget_simple') }}
+    <datalist id="{{ id }}-datalist" {{ max_tags is not null ? 'max-tags='~max_tags~'' : '' }}>
+        {% for id, option in options %}
+            <option value="{{ id }}">{{ option }}</option>
+        {% endfor %}
+    </datalist>
+{% endblock %}

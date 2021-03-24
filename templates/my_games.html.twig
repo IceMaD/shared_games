@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('myGames') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('myGames') }}
+{% endblock %}
+
+{% block title %}My games{% endblock %}
+
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Tags</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        {% for game in app.user.games %}
+            <tr>
+                <td>{{ game.name }}</td>
+                <td>{{ game.tags |map((tag) => tag.name)|join(', ') }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {{ form(addGamesForm) }}
+{% endblock %}
+

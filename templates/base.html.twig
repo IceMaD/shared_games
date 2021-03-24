@@ -30,9 +30,13 @@
                 <li>
                     <a href="{{ path('home') }}">Home</a>
                 </li>
+                <li>
+                    <a href="{{ path('my_games') }}">My games</a>
+                </li>
             </ul>
         </nav>
         <div class="main">
+            <h1>{{ block('title') }}</h1>
             {% block main %}{% endblock %}
         </div>
     </body>

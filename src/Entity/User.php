@@ -65,7 +65,19 @@ class User implements UserInterface
         return $this->pseudo;
     }
 
-    public function getGames(): ArrayCollection
+    public function addGame(Game $game): self
+    {
+        if (!$this->games->contains($game)) {
+            $this->games[] = $game;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|Game[]
+     */
+    public function getGames(): Collection
     {
         return $this->games;
     }

@@ -27,17 +27,19 @@ class Game
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="games")
      */
-    private Collection $games;
+    private Collection $tags;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="games")
      */
     private Collection $users;
 
-    public function __construct()
+    public function __construct(string $name)
     {
-        $this->games = new ArrayCollection();
+        $this->tags = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->name = $name;
+        $this->id = null;
     }
 
     public function getId(): ?int
@@ -50,12 +52,12 @@ class Game
         return $this->name;
     }
 
-    public function getGames(): ArrayCollection
+    public function getTags(): Collection
     {
-        return $this->games;
+        return $this->tags;
     }
 
-    public function getUsers(): ArrayCollection
+    public function getUsers(): Collection
     {
         return $this->users;
     }

@@ -25,7 +25,7 @@ class Tag
     private string $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="games")
+     * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="tags")
      */
     private Collection $games;
 
@@ -44,7 +44,7 @@ class Tag
         return $this->name;
     }
 
-    public function getGames(): ArrayCollection
+    public function getGames(): Collection
     {
         return $this->games;
     }

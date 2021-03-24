@@ -1,5 +1,6 @@
 $lila: #7289da;
 $white: #ffffff;
+$white-broken: #e0e5e8;
 $grey-light: #99aab5;
 $grey-medium: #2c2f33;
 $grey-dark: #23272a;
@@ -38,7 +39,7 @@ body {
         a {
           text-decoration: none;
           color: inherit;
-          display: inline-block;
+          display: block;
           padding: 1rem 1.5rem;
         }
       }
@@ -50,6 +51,16 @@ body {
     grid-column: 2 / 3;
     background-color: $white;
     color: $grey-dark;
+  }
+}
+
+table {
+  width: 100%;
+  tr {
+    td {
+      padding: .5rem 1rem;
+      border-bottom: 1px solid $white-broken;
+    }
   }
 }
 
