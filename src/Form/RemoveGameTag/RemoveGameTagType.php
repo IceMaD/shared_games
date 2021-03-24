@@ -5,6 +5,7 @@ namespace App\Form\RemoveGameTag;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RemoveGameTagType extends AbstractType
 {
@@ -12,6 +13,13 @@ class RemoveGameTagType extends AbstractType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('Delete', SubmitType::class, ['attr'=> ['class' => 'button']]);
+        $builder->add('Delete', SubmitType::class, ['attr'=> ['class' => 'button danger']]);
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        parent::configureOptions($resolver);
+
+        $resolver->setDefault('method', 'DELETE');
     }
 }

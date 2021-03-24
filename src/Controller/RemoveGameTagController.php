@@ -31,7 +31,6 @@ class RemoveGameTagController extends AbstractController
             RemoveGameTagType::class,
             null,
             [
-                'method' => 'DELETE',
                 'action' => $this->generateUrl(
                     'remove_game_tag',
                     ['game' => $game->getId(), 'tag' => $tag->getId()]
