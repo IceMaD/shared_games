@@ -25,6 +25,11 @@ class Tag
     private string $name;
 
     /**
+     * @ORM\Column(type="string", length=5, nullable=true)
+     */
+    private ?string $emoji;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="tags")
      */
     private Collection $games;
@@ -39,6 +44,16 @@ class Tag
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEmoji(): ?string
+    {
+        return $this->emoji;
+    }
+
+    public function setEmoji(string $emoji): void
+    {
+        $this->emoji = $emoji;
     }
 
     public function getName(): string

@@ -20,6 +20,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@yaireo/tagify": "^3.23.1"
+        "@popperjs/core": "^2.9.1",
+        "@yaireo/tagify": "^3.23.1",
+        "unicode-emoji-picker": "^1.1.1"
     }
 }

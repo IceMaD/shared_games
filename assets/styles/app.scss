@@ -111,6 +111,13 @@ form:not(.remove) {
     }
   }
 
+  [emoji-pick] {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
   .submit-row {
     margin-top: 1rem;
     display: flex;

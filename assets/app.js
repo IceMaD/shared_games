@@ -1,4 +1,3 @@
-import '@yaireo/tagify/dist/tagify.css'
-
 import './scripts/Page/Home'
+import './scripts/Page/Tags'
 import './styles/app.scss'

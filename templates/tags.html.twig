@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tags{% endblock %}
+
+{% block main %}
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Emoji
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tag in tags %}
+                    <tr>
+                        <td>
+                            {{ render(controller('\\App\\Controller\\EditTagEmojiController', {tag: tag})) }}
+                        </td>
+                        <td>
+                            {{ tag.name }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

@@ -867,6 +867,11 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@popperjs/core@^2.9.1":
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.1.tgz#7f554e7368c9ab679a11f4a042ca17149d70cf12"
+  integrity sha512-DvJbbn3dUgMxDnJLH+RZQPnXak1h4ZVYQ7CWiFWjQwBFkVajT4rfw2PdpHLTSTwxrYfnoEXkuBiwkDm6tPMQeA==
+
 "@stimulus/core@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@stimulus/core/-/core-2.0.0.tgz#140c85318d6a8a8210c0faf182223b8459348877"
@@ -4551,6 +4556,11 @@ schema-utils@^3.0.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+scrollable-component@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/scrollable-component/-/scrollable-component-1.1.1.tgz#2c644ef0491382f65c1e923dabeb26cfdd1ed3a4"
+  integrity sha512-7akJ/k/El39WYLEDCiarGAQwyXpc6vH+3ubRDIFpllYKATn/yrvFPwqebSEo2a8GDQ7mli4dCHKWjJQbAykvLw==
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -5061,6 +5071,19 @@ unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"
   integrity sha512-jDrNnXWHd4oHiTZnx/ZG7gtUTVp+gCcTTKr8L0HjlwphROEW3+Him+IpvC+xcJEFegapiMZyZe02CyuOnRmbnQ==
+
+unicode-emoji-picker@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/unicode-emoji-picker/-/unicode-emoji-picker-1.1.1.tgz#fa12931810afcf301a68bdba7d8fd3f535e2b9aa"
+  integrity sha512-WPfg8c3Kgs2D8Stqxba7RyHFlES2uKmPQuT3/YkxGVk+LrWXF7hV56IejgWKDbcwgNJlCcmf1Fx3lMOFI6b+Uw==
+  dependencies:
+    scrollable-component "^1.1.1"
+    unicode-emoji "^2.1.1"
+
+unicode-emoji@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/unicode-emoji/-/unicode-emoji-2.1.1.tgz#0bb2f70e96cf1ec5c92f748b490a76fdb29d64d7"
+  integrity sha512-VREK+ghy4SEL7z4wXXkMKPNM35sQTXJx9J0w/7opruuRKR6gtbAaz/h83cD1b1NVwrdnlgZgGvj0Nm6InsiuZg==
 
 unicode-match-property-ecmascript@^1.0.4:
   version "1.0.4"
