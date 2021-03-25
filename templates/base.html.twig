@@ -21,7 +21,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body route="{{ app.request.get('_route') }}">
         <header class="header">
             Shared games
         </header>
