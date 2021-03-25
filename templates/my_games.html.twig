@@ -17,7 +17,7 @@
                 <tr>
                     <td>{{ game.name }}</td>
                     <td align="right">
-                        {{ game.price ? game.price |number_format(2, '.') : '-.--' }} €
+                        {{ game.price is not null ? game.price |number_format(2, '.') : '-.--' }} €
                         <a class="edit-button" href="{{ path('edit_game_price', {id: game.id}) }}" title="Edit price">🖍️</a>
                     </td>
                     <td>

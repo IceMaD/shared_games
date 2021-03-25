@@ -27,7 +27,7 @@
                 {% for game in games|sort((a, b) => a.name <=> b.name) %}
                     <tr game="{{ game.name }}" tags="{{ game.tags |map((tag) => tag.id) |json_encode }}">
                         <td>{{ game.name }}</td>
-                        <td align="right">{{ game.price ? game.price |number_format(2, '.') : '-.--' }} €</td>
+                        <td align="right">{{ game.price is not null ? game.price |number_format(2, '.') : '-.--' }} €</td>
                         <td>
                             {%- for tag in game.tags -%}
                                 {%- if tag.emoji -%}

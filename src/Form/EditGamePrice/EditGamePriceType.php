@@ -24,7 +24,7 @@ class EditGamePriceType extends AbstractType
             IntegerType::class,
             [
                 'attr' => [
-                    'min' => 1,
+                    'min' => 0,
                     'max' => 100,
                     'step' => 1,
                 ],
