@@ -92,6 +92,15 @@ body {
   }
 }
 
+.edit-button {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  margin-left: .5rem;
+  color: transparent;
+  text-shadow: 0 0 0 $lila;
+}
+
 .tag-emoji {
   margin-right: .25rem;
 }

@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <td>Name</td>
+                    <td>Price</td>
                     <td>Tags</td>
                     <td>Actions</td>
                 </tr>
@@ -15,6 +16,10 @@
             {% for game in app.user.games|sort((a, b) => a.name <=> b.name) %}
                 <tr>
                     <td>{{ game.name }}</td>
+                    <td align="right">
+                        {{ game.price ? game.price |number_format(2, '.') : '-.--' }} €
+                        <a class="edit-button" href="{{ path('edit_game_price', {id: game.id}) }}" title="Edit price">🖍️</a>
+                    </td>
                     <td>
                         {%- for tag in game.tags -%}
                             {%- if tag.emoji -%}
@@ -23,12 +28,10 @@
                             {{ tag.name }}
                             {%- if not loop.last -%}, {% endif -%}
                         {%- endfor -%}
+                        <a class="edit-button" href="{{ path('edit_game_tags', {id: game.id}) }}" title="Edit tags">🖍️</a>
                     </td>
                     <td>
-                        <div class="button-bar">
-                            <a class="button" href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>
-                            {{ render(controller('\\App\\Controller\\RemoveUserGameController', {game: game})) }}
-                        </div>
+                        {{ render(controller('\\App\\Controller\\RemoveUserGameController', {game: game})) }}
                     </td>
                 </tr>
             {% endfor %}

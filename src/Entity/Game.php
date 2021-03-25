@@ -25,6 +25,11 @@ class Game
     private string $name;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private ?int $price;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="games")
      */
     private Collection $tags;
@@ -50,6 +55,18 @@ class Game
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
     }
 
     public function addTag(Tag $tag): self

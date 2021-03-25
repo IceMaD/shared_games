@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit {{ game.name }} price{% endblock %}
+
+{% block main %}
+    <div class="card">
+        {{ form(editPriceForm) }}
+    </div>
+{% endblock %}
+
