@@ -15,7 +15,15 @@
             {% for game in app.user.games|sort((a, b) => a.name <=> b.name) %}
                 <tr>
                     <td>{{ game.name }}</td>
-                    <td>{{ game.tags |map((tag) => tag.name)|sort|join(', ') }}</td>
+                    <td>
+                        {%- for tag in game.tags -%}
+                            {%- if tag.emoji -%}
+                                <span class="tag-emoji">{{ tag.emoji }}</span>
+                            {%- endif -%}
+                            {{ tag.name }}
+                            {%- if not loop.last -%}, {% endif -%}
+                        {%- endfor -%}
+                    </td>
                     <td>
                         <div class="button-bar">
                             <a class="button" href="{{ path('edit_game_tags', {id: game.id}) }}">Edit tags</a>
