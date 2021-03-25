@@ -29,6 +29,7 @@
                         <td>
                             {%- for tag in game.tags -%}
                                 <span filter-tag="{{ tag.id }}" title="Filter on this tag">
+                                    <span class="tag-emoji">{{- tag.emoji -}}</span>
                                     {{- tag.name -}}
                                 </span>
                                 {%- if not loop.last -%}, {% endif -%}
