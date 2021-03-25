@@ -16,6 +16,10 @@ class TagInputManager {
   }
 
   register(id) {
+    if (this._inputs[id]) {
+      return;
+    }
+
     const input = document.getElementById(id)
     const datalist = document.getElementById(`${input.id}-datalist`)
     const maxTags = datalist.getAttribute('max-tags') ?? Infinity
@@ -26,6 +30,6 @@ class TagInputManager {
   }
 }
 
-export default TagInputManager
+export const tagInputManager = new TagInputManager();
 
 export const optionToTag = (value, label) => ({id: value, value: label})
