@@ -2,7 +2,7 @@ $lila: #7289da;
 $chlorophyll: #8fda72;
 $rose: #da7272;
 $white: #ffffff;
-$white-broken: #e9e9e9;
+$white-broken: #f2f2f2;
 $grey-light: #99aab5;
 $grey-medium: #2c2f33;
 $grey-dark: #23272a;
@@ -176,6 +176,10 @@ table {
   tr {
     border: none;
 
+    &:nth-of-type(even) {
+      background-color: $white-broken;
+    }
+
     td {
       padding: .5rem 1rem;
       border: none;
@@ -204,4 +208,3 @@ table {
     }
   }
 }
-
