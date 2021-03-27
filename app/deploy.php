@@ -8,6 +8,7 @@ require __DIR__.'/vendor/deployer/recipes/recipe/yarn.php';
 set('application', 'shared_games');
 set('repository', 'git@github.com:IceMaD/shared_games.git');
 set('git_tty', true);
+set('current_path', './app');
 add('shared_files', [
     '.env',
 ]);
@@ -31,4 +32,3 @@ after('yarn:install', 'yarn:build');
 before('deploy:symlink', 'database:migrate');
 
 after('deploy:failed', 'deploy:unlock');
-
