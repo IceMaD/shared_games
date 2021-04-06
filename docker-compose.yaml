@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  app:
+    build: docker/nginx-php
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./docker/nginx-php/default.conf:/etc/nginx/sites-enabled/default
+      - ./app/:/app
+    ports:
+      - ${DOCKER_APP_PORT_PREFIX:-80}81:80
+    depends_on:
+      - database
+
+  node:
+    image: node:14-buster
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./app/:/app
+    ports:
+      - ${DOCKER_APP_PORT_PREFIX:-80}80:8080
+    entrypoint: yarn dev-server
+
+  database:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "ZEUuM8H+nogVt8_"
+      MYSQL_USER: shared_games
+      MYSQL_PASSWORD: shared_games
+      MYSQL_DATABASE: shared_games
+    volumes:
+      - database:/var/lib/mysql
+
+volumes:
+  database: ~
